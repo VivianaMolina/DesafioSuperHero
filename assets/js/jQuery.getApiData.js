@@ -3,7 +3,7 @@ jQuery.fn.getApiData = function (options) {
     var token = options.tokenParm; //parametro que contiene el token
     var apiUrl = options.apiUrlParm; //parametro que contiene la url de la API
     
-    var dataPoints = options.dataPointsParm;
+    var dataPoints = [];
     var idName = options.idNameParm;
     var element = this;
 
@@ -16,6 +16,7 @@ jQuery.fn.getApiData = function (options) {
             if (data.response === "success"){
                 dataPoints = data.powerstats
                 idName = data.name;
+                //Genera el Pie Chart de CanvasJs
                 window.onload = $('#chartContainer').heroPowerstatsPieChart({
                 dataPointsParm: dataPoints,    // pasa parametro dataPoints  
                 idNameParm: idName  // pasa parametro nombre

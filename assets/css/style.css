@@ -42,7 +42,8 @@ h1 {
 }
 
 .btn {
-    background-color: #3A5199;
+    /* background-color: #3A5199; */
+    background-color: #3F6C45;
     border: none;
     color: white;
     padding: 15px 32px;
