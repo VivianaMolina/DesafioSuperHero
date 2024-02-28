@@ -14,34 +14,32 @@ $( "#buscarHero" ).on( "click", function() {
 
 function createSuperHeroSection(numeroHero){
     //Limpia cualquier resultado anterior - The empty() method removes all child nodes and content from the selected elements
-    LimpiaOutput()
+    limpiaOutput()
     //plugin - invoca al jquery plugin getApiData el cual mediante Ajax y metodo GET obtiene la data del superhero
-    $('#CardHeroInfo').getApiData({ 
-        HeroIdParm: numeroHero, // pasa parametro numero ingresado por usuario al plugin getApiData
+    $('#cardHeroInfo').getApiData({ 
+        heroIdParm: numeroHero, // pasa parametro numero ingresado por usuario al plugin getApiData
         tokenParm: myToken,     // pasa parametro token al plugin getApiData
         apiUrlParm: apiUrl,     // pasa parametro url al plugin getApiData              
     });
 }
 
 function validarInput(numero) { 
-
     let permitido = /[0-9]/gim;
 
     if ( numero.match(permitido)) { 
         document.querySelector(".error").innerHTML = "";
         return 0;
     } else {
-        LimpiaOutput() 
+        limpiaOutput() 
         document.querySelector(".error").innerHTML = "Para poder buscar un SuperHero debes ingresar un número";
         return 1;
     }
 }
 
-function LimpiaOutput() { 
-
-    $('#CardHeroInfo').empty(); 
+function limpiaOutput() { 
+    $('#cardHeroInfo').empty(); 
     $('#chartContainer').empty(); 
-    $('.Herofound').empty(); 
+    $('.herofound').empty(); 
 }
 
 });

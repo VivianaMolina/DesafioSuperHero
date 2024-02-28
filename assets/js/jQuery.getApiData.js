@@ -1,10 +1,8 @@
 jQuery.fn.getApiData = function (options) {
-    var heroId = options.HeroIdParm; //parametro que contiene el numero del heroe ingresado por usuario
+    var heroId = options.heroIdParm; //parametro que contiene el numero del heroe ingresado por usuario
     var token = options.tokenParm; //parametro que contiene el token
     var apiUrl = options.apiUrlParm; //parametro que contiene la url de la API
-    
-    var dataPoints = [];
-    var idName = options.idNameParm;
+
     var element = this;
 
     $.ajax({   //3.4 Consulta la API mediante AJAX con la sintaxis de jQuery
@@ -14,14 +12,13 @@ jQuery.fn.getApiData = function (options) {
         success: function (data) {
             
             if (data.response === "success"){
-                dataPoints = data.powerstats
-                idName = data.name;
                 //Genera el Pie Chart de CanvasJs
                 window.onload = $('#chartContainer').heroPowerstatsPieChart({
-                dataPointsParm: dataPoints,    // pasa parametro dataPoints  
-                idNameParm: idName  // pasa parametro nombre
-                });           
-                document.querySelector(".Herofound").innerHTML = "SuperHero Encontrado",
+                    dataPointsParm: data.powerstats,    // pasa parametro dataPoints  
+                    heroNameParm: data.name  // pasa parametro nombre
+                });  
+                         
+                document.querySelector(".herofound").innerHTML = "SuperHero Encontrado",
                 element.append( // 3.5 Renderiza la información recibida por la API dinámicamente utilizando tarjetas (card) de Bootstrap
                 `<div class="col-md-4">
                         <img src="${data.image.url}" class="img-fluid style-img" alt="...">
